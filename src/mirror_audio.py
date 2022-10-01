@@ -15,13 +15,13 @@ class MirrorAudio():
         self.RATE = 44100
         self.RECORD_SECONDS = 5
         self.WAVE_OUTPUT_FILENAME = "output.wav"
-        self.paudio = pyaudio.PyAudio()
+        self.pyaudio = pyaudio.PyAudio
         self.TZ = "EST"
 
     def mirror_record(self):
         tz = timezone(self.TZ)
         frames = []
-        stream = self.paudio(
+        stream = self.pyaudio(
             format=self.FORMAT,
             channels=self.CHANNELS,
             rate=self.RATE,
@@ -35,11 +35,11 @@ class MirrorAudio():
 
         stream.stop_stream()
         stream.close()
-        self.paudio.terminate()
+        self.pyaudio.terminate()
 
         wf = wave.open(self.WAVE_OUTPUT_FILENAME, 'wb')
         wf.setnchannels(self.CHANNELS)
-        wf.setsampwidth(self.paudio.get_sample_size(self.FORMAT))
+        wf.setsampwidth(self.pyaudio.get_sample_size(self.FORMAT))
         wf.setframerate(self.RATE)
         wf.writeframes(b''.join(frames))
         wf.close()
