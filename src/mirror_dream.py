@@ -24,8 +24,8 @@ class MirrorDream():
                     warnings.warn(
                         "Your request activated the API's safety filters and could not be processed."
                         "Please modify the prompt and try again.")
-                    if artifact.type == generation.ARTIFACT_IMAGE:
-                        img = Image.open(io.BytesIO(artifact.binary))
-                        img.save(fp='generated_image.jpg')
+                if artifact.type == generation.ARTIFACT_IMAGE:
+                    img = Image.open(io.BytesIO(artifact.binary))
+                    img.save(fp='generated_image.jpg')
 
 
