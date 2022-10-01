@@ -45,3 +45,5 @@ class MirrorAudio():
         wf.close()
 
 if __name__ == "__main__":
+    audio = MirrorAudio()
+    audio.mirror_record()
