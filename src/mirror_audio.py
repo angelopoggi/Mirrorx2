@@ -1,51 +1,47 @@
 #Audio Class for Mirror Mirro Project
 
-import logging
-from datetime import datetime
-from pytz import timezone
-import wave
-
 import pyaudio
+import wave
+import speech_recognition as sr
 
 class MirrorAudio():
     def __init__(self):
-        self.CHUNK = 1024
         self.FORMAT = pyaudio.paInt16
-        self.CHANNELS = 2
+        self.CHANNELS = 1
         self.RATE = 44100
+        self.CHUNK = 512
         self.RECORD_SECONDS = 5
-        self.WAVE_OUTPUT_FILENAME = "output.wav"
-        #self.pyaudio = pyaudio.PyAudio()
-        self.TZ = "EST"
+        self.WAVE_OUTPUT_FILENAME = "recordedFile.wav"
+        self.device_index = 2
 
     def mirror_record(self):
-        tz = timezone(self.TZ)
-        frames = []
-        paudio = pyaudio.PyAudio()
-        stream = paudio(
-            format=self.FORMAT,
-            channels=self.CHANNELS,
-            rate=self.RATE,
-            input=True,
-            input_device_index = 
-            frames_per_buffer=self.CHUNK
-        )
-        logging.log(f"Started Recording at {datetime.now(tz)}")
+        audio = pyaudio.PyAudio()
+        stream = audio.open(format=self.FORMAT, channels=self.CHANNELS,
+                            rate=self.RATE, input=True, input_device_index=self.index,
+                            frames_per_buffer=self.CHUNK)
+        print("recording started")
+        Recordframes = []
+
         for i in range(0, int(self.RATE / self.CHUNK * self.RECORD_SECONDS)):
             data = stream.read(self.CHUNK)
-            frames.append(data)
+            Recordframes.append(data)
+        print("recording stopped")
 
         stream.stop_stream()
         stream.close()
-        stream.terminate()
+        audio.terminate()
 
-        wf = wave.open(self.WAVE_OUTPUT_FILENAME, 'wb')
-        wf.setnchannels(self.CHANNELS)
-        wf.setsampwidth(self.paudio.get_sample_size(self.FORMAT))
-        wf.setframerate(self.RATE)
-        wf.writeframes(b''.join(frames))
-        wf.close()
+        waveFile = wave.open(self.WAVE_OUTPUT_FILENAME, 'wb')
+        waveFile.setnchannels(self.CHANNELS)
+        waveFile.setsampwidth(audio.get_sample_size(self.FORMAT))
+        waveFile.setframerate(self.RATE)
+        waveFile.writeframes(b''.join(Recordframes))
+        waveFile.close()
 
-if __name__ == "__main__":
-    audio = MirrorAudio()
-    audio.mirror_record()
+        r = sr.Recognizer()
+        with sr.AudioFile(self.WAVE_OUTPUT_FILENAME) as source:
+            # listen for the data (load audio to memory)
+            audio_data = r.record(source)
+            # recognize (convert from speech to text)
+            text = r.recognize_google(audio_data)
+            print(text)
