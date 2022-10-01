@@ -17,5 +17,5 @@ if __name__ == "__main__":
         input_prompt = prompt.readlines()
         dream.dream(input_prompt)
 
-    os.system(f"fbi -a generated_img.jpg")
+    os.system(f"fbi -a generated_image.jpg")
 
