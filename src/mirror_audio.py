@@ -15,7 +15,7 @@ class MirrorAudio():
         self.RATE = 44100
         self.RECORD_SECONDS = 5
         self.WAVE_OUTPUT_FILENAME = "output.wav"
-        self.pyaudio = pyaudio.PyAudio
+        self.pyaudio = pyaudio.PyAudio()
         self.TZ = "EST"
 
     def mirror_record(self):
