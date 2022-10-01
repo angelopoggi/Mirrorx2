@@ -7,7 +7,7 @@ from PIL import Image
 
 
 
-class MirrorDream()
+class MirrorDream():
     def __init__(self):
         pass
     def dream(self, prompt):
