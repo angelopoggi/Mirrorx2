@@ -17,7 +17,7 @@ class MirrorAudio():
     def mirror_record(self):
         audio = pyaudio.PyAudio()
         stream = audio.open(format=self.FORMAT, channels=self.CHANNELS,
-                            rate=self.RATE, input=True, input_device_index=self.index,
+                            rate=self.RATE, input=True, input_device_index=self.device_index,
                             frames_per_buffer=self.CHUNK)
         print("recording started")
         Recordframes = []
