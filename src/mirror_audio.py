@@ -2,7 +2,6 @@
 
 import pyaudio
 import wave
-import speech_recognition as sr
 
 class MirrorAudio():
     def __init__(self):
@@ -38,13 +37,6 @@ class MirrorAudio():
         waveFile.writeframes(b''.join(Recordframes))
         waveFile.close()
 
-        r = sr.Recognizer()
-        with sr.AudioFile(self.WAVE_OUTPUT_FILENAME) as source:
-            # listen for the data (load audio to memory)
-            audio_data = r.record(source)
-            # recognize (convert from speech to text)
-            text = r.recognize_google(audio_data)
-            print(text)
 
 if __name__ == "__main__":
     foo = MirrorAudio()
