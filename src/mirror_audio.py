@@ -45,3 +45,7 @@ class MirrorAudio():
             # recognize (convert from speech to text)
             text = r.recognize_google(audio_data)
             print(text)
+
+if __name__ == "__main__":
+    foo = MirrorAudio()
+    foo.mirror_record()
