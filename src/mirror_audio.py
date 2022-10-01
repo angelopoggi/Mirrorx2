@@ -27,6 +27,7 @@ class MirrorAudio():
             channels=self.CHANNELS,
             rate=self.RATE,
             input=True,
+            input_device_index = 
             frames_per_buffer=self.CHUNK
         )
         logging.log(f"Started Recording at {datetime.now(tz)}")
