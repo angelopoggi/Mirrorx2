@@ -1,8 +1,10 @@
 import random
+import os
 
 class RandUtils():
     def __init__(self):
-        pass
+        self.__location__ = os.path.realpath(
+            os.path.join(os.getcwd(), os.path.dirname(__file__)))
     def rand_prompt(self):
         '''Takes a Prompt file and genertes one with random artists
         returns a dictionary with the selected artist and medium as such;
@@ -11,9 +13,9 @@ class RandUtils():
         '''
         artists_list = []
         medium_list = []
-        with open('./artists.txt', 'r') as afile:
+        with open(f"{self.__location__}/utils/'artists.txt", 'r') as afile:
             for line in afile:
-                artists_list.append()
+                artists_list.append(line)
         with open('./medium.txt', 'r') as mfile:
             for line in mfile:
                 medium_list.append(line)
