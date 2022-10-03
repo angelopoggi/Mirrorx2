@@ -13,7 +13,8 @@ if __name__ == "__main__":
     speak = MirrorSpeech()
     dream = MirrorDream()
     record.mirror_record()
-    prompt = RandUtils.rand_prompt()
+    rand = RandUtils()
+    prompt = rand.rand_prompt()
     speak.mirror_speech("recordedFile.wav")
     with open("prompt.txt", 'r') as prompt:
         input_prompt = prompt.readlines()
