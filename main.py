@@ -16,6 +16,7 @@ if __name__ == "__main__":
     speak.mirror_speech("recordedFile.wav")
     with open("prompt.txt", 'r') as prompt:
         input_prompt = prompt.readlines()
+        print(input_prompt)
         dream.dream(input_prompt)
 
     os.system(f"fbi -a {prompt}.jpg")
