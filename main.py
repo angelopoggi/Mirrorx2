@@ -15,6 +15,7 @@ if __name__ == "__main__":
     record.mirror_record()
     rand = RandUtils()
     prompt = rand.rand_prompt()
+    print(prompt)
     speak.mirror_speech("recordedFile.wav")
     with open("prompt.txt", 'r') as prompt:
         input_prompt = prompt.readlines()
