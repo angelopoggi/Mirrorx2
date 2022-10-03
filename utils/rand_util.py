@@ -15,9 +15,11 @@ class RandUtils():
         medium_list = []
         with open(f"{self.__location__}/artists.txt", 'r') as afile:
             for line in afile:
+                line.rstrip("\n")
                 artists_list.append(line)
         with open(f"{self.__location__}/medium.txt", 'r') as mfile:
             for line in mfile:
+                line.rstrip("\n")
                 medium_list.append(line)
         artists_selection = random.choice(artists_list)
         med_selection = random.choice(medium_list)
