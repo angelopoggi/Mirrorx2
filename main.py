@@ -17,7 +17,7 @@ if __name__ == "__main__":
     with open("prompt.txt", 'r') as prompt:
         input_prompt = prompt.readlines()
         print(input_prompt)
-        dream.dream(input_prompt)
+        dream.dream(input_prompt[0])
 
-    os.system(f"fbi -a {prompt}.jpg")
+    os.system(f"fbi -a genearted_image.jpg")
 

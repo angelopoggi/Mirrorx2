@@ -26,6 +26,6 @@ class MirrorDream():
                         "Please modify the prompt and try again.")
                 if artifact.type == generation.ARTIFACT_IMAGE:
                     img = Image.open(io.BytesIO(artifact.binary))
-                    img.save(fp=f'{prompt}.jpg')
+                    img.save(fp='generated_image.jpg')
 
 
