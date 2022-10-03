@@ -13,10 +13,10 @@ class RandUtils():
         '''
         artists_list = []
         medium_list = []
-        with open(f"{self.__location__}/utils/'artists.txt", 'r') as afile:
+        with open(f"{self.__location__}/'artists.txt", 'r') as afile:
             for line in afile:
                 artists_list.append(line)
-        with open('./medium.txt', 'r') as mfile:
+        with open(f"{self.__location__}/medium.txt", 'r') as mfile:
             for line in mfile:
                 medium_list.append(line)
         artists_selection = random.choice(artists_list)
