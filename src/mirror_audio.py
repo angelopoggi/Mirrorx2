@@ -11,13 +11,13 @@ class MirrorAudio():
         self.CHUNK = 512
         self.RECORD_SECONDS = 5
         self.WAVE_OUTPUT_FILENAME = "recordedFile.wav"
-        self.device_index = 2
+        self.device_index = 1
 
     def mirror_record(self):
         audio = pyaudio.PyAudio()
-        for i in range(audio.get_device_count()):
-            dev = audio.get_device_info_by_index(i)
-            print((i, dev['name'], dev['maxInputChannels']))
+        # for i in range(audio.get_device_count()):
+        #     dev = audio.get_device_info_by_index(i)
+        #     print((i, dev['name'], dev['maxInputChannels']))
         stream = audio.open(format=self.FORMAT, channels=self.CHANNELS,
                             rate=self.RATE, input=True, input_device_index=self.device_index,
                             frames_per_buffer=self.CHUNK)
