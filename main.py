@@ -20,9 +20,7 @@ if __name__ == "__main__":
     with open("prompt.txt", 'r') as prompt:
         input_prompt = prompt.readlines()
         print(input_prompt)
-        input_prompt.append(prompt['medium'])
-        input_prompt.append(prompt['artist'])
-        input_prompt = f"{input_prompt[0]},{input_prompt[1]}, by {input_prompt[2]}"
+        input_prompt = f"{input_prompt[0]},{prompt['medium']}, by {prompt['artist']}"
         print(input_prompt)
         dream.dream(input_prompt)
 
