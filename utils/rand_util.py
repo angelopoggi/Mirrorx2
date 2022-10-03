@@ -11,10 +11,10 @@ class RandUtils():
         '''
         artists_list = []
         medium_list = []
-        with open('artists.txt', 'r') as afile:
+        with open('./artists.txt', 'r') as afile:
             for line in afile:
                 artists_list.append()
-        with open('medium.txt', 'r') as mfile:
+        with open('./medium.txt', 'r') as mfile:
             for line in mfile:
                 medium_list.append(line)
         artists_selection = random.choice(artists_list)
